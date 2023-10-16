@@ -1,0 +1,15 @@
+import { Issuer, generators } from "openid-client";
+
+export async function setUpOIDC() {
+  const ibmIssuer = await Issuer.discover(
+    process.env.TENANT_URL as string
+  );
+  return new ibmIssuer.Client({
+    client_id: process.env.CLIENT_ID as string,
+    redirect_uri: process.env.REDIRECT_URI,
+    response_type: process.env.RESPONSE_TYPE,
+    client_secret: process.env.CLIENT_SECRET,
+  });
+}
+
+export const nonce = generators.nonce();
