@@ -1,10 +1,10 @@
-const redirectUri = process.env.REDIRECT_URI;
+const redirectUri = new URL(process.env.REDIRECT_URI).pathname;
 
 module.exports = {
     async redirects() {
         return [
           {
-            source: `/auth/callback`,
+            source: redirectUri,
             destination: '/redirect',
             permanent: true,
           },
