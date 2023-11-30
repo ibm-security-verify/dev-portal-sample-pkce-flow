@@ -1,5 +1,5 @@
 {
-  "name": "pkce",
+  "name": "dev-portal-sample-pkce-flow",
   "version": "0.1.0",
   "private": true,
   "scripts": {
