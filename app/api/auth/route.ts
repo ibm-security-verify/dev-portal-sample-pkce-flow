@@ -1,4 +1,3 @@
-// Route to get assess_Token from IBM server and save it in Cookie
 import {
   setUpOIDC
 } from "@/app/lib/client";
