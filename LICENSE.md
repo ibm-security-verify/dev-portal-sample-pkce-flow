@@ -1,6 +1,6 @@
 MIT License
 
-Copyright contributors to the IBM Security Verify Developer Portal Sample App for Authorization Code Flow with Proof Key for Code Exchange (PKCE)project
+Copyright contributors to the IBM Security Verify Developer Portal Sample App for Authorization Code Flow with Proof Key for Code Exchange (PKCE) project
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
