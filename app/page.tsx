@@ -4,13 +4,17 @@ import React from "react";
 
 export default function Home() {
   const [authURL, setAuthURL] = React.useState('') 
-
+  const ref = React.useRef(false);
   React.useEffect(() => {
-    fetch('/api/auth/authURL',{method: 'POST'})
-      .then((res) => res.json())
-      .then((data) => {
-        setAuthURL(data);
-      })
+    if(!ref.current) {
+      fetch('/api/auth/authURL',{method: 'POST'})
+        .then((res) => res.json())
+        .then((data) => {
+          setAuthURL(data);
+        });
+        ref.current = true;
+    }
+
   }, []);
 
   return (

@@ -4,11 +4,11 @@ import { cookies } from 'next/headers'
 import { generators } from "openid-client";
 
 
+const codeVerifier = generators.codeVerifier();
+const codeChallenge = generators.codeChallenge(codeVerifier);
 
 //route for return URL
 export async function POST(){
-    const codeVerifier = generators.codeVerifier();
-    const codeChallenge = generators.codeChallenge(codeVerifier);
     const cookieStore = cookies()
     cookieStore.set({name: 'cv', value: codeVerifier, httpOnly: true});
     cookieStore.set('nonce', nonce);

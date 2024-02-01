@@ -9,19 +9,24 @@ type Props = {
 };
 
 export default function Page(props: Props) {
-  // Fetch api/auth route to set cookie which name is token including assess_Token
+  const ref = React.useRef(false);
+
+  
   useEffect(() => {
-    const code = props.searchParams?.code;
-    async function fetchAuth() {
-      const response = await fetch(`/api/auth?code=${code}`, { method: "GET" });
-      const data = await response.json();
-      if (data.success) {
-        window.location.href = "/dashboard";
-      } else {
-        window.location.href = "/";
+    if(!ref.current) {
+      ref.current = true;
+      const code = props.searchParams?.code;
+      const fetchAuth = async() => {
+        const response = await fetch(`/api/auth?code=${code}`, { method: "GET" });
+        const data = await response.json();
+        if (data.success) {
+          window.location.href = "/dashboard";
+        } else {
+          window.location.href = "/";
+        }
       }
+      fetchAuth();
     }
-    fetchAuth();
   }, []);
 
   return(  
