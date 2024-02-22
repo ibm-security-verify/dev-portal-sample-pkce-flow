@@ -12,7 +12,7 @@ on:
   workflow_dispatch: 
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.TOKEN }}
   ASOC_KEY: ${{ secrets.ASOC_KEY}}
   ASOC_SECRET: ${{ secrets.ASOC_SECRET }}
 
