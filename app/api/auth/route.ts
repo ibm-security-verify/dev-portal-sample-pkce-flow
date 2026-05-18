@@ -9,14 +9,16 @@ export async function GET(request: Request) {
   const code = searchParams.get("code");
   // Try to get assess_Token from IBM server, if get code. If success, generate a respond to save the token, else tell user failed
   if (code != null) {
-    const url = `${process.env.REDIRECT_URI}?code=${code}`;
     const client = await setUpOIDC();
-    const params = client.callbackParams(url);
-    const code_verifier = cookies().get('cv')?.value;
-    const nonce = cookies().get('nonce')?.value;
+    const params = client.callbackParams(request.url);
+    const cookieStore = await cookies();
+    const code_verifier = cookieStore.get('cv')?.value;
+    const nonce = cookieStore.get('nonce')?.value;
+    const state = cookieStore.get('state')?.value;
     if(code_verifier) {
       const response = await client
       .callback(process.env.REDIRECT_URI, params, {
+        state,
         nonce,
         code_verifier,
       }).then((userJWT)=>{

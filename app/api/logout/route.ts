@@ -2,13 +2,13 @@ import { setUpOIDC } from "@/app/lib/client";
 import { cookies } from "next/headers";
 
 export async function GET() {
-  const cookieStore = cookies()
+  const cookieStore = await cookies()
   const token = cookieStore.get('token')?.value;
   if(token){
     await setUpOIDC().then((client) => {
       client.revoke(token);
-      cookies().delete('cv');
-      cookies().delete('token');
+      cookieStore.delete('cv');
+      cookieStore.delete('token');
     })
   }
 

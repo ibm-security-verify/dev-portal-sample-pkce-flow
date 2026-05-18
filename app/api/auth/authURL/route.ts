@@ -9,14 +9,17 @@ const codeChallenge = generators.codeChallenge(codeVerifier);
 
 //route for return URL
 export async function POST(){
-    const cookieStore = cookies()
+    const state = generators.state();
+    const cookieStore = await cookies()
     cookieStore.set({name: 'cv', value: codeVerifier, httpOnly: true});
     cookieStore.set('nonce', nonce);
+    cookieStore.set('state', state);
 
     const client = await setUpOIDC();
     // create a Authorization URL
     const authorizationUrl = client.authorizationUrl({
     scope: "openid",
+    state: state,
     nonce: cookieStore.get('nonce')?.value,
     code_challenge: codeChallenge,
     code_challenge_method: "S256",

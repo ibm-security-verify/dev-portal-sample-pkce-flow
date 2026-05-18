@@ -3,7 +3,7 @@ import { setUpOIDC } from "../lib/client";
 import { cookies } from "next/headers";
 
 export default async function Page() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const accessToken = cookieStore.get("token")?.value;
 
   if (!accessToken) {
