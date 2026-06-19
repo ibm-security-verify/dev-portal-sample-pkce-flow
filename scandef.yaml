@@ -1,0 +1,19 @@
+defaults:
+  jiraProjectKey: VDEV
+  jiraIssueTypeName: Task
+  jiraAutoCloseTransitionName: "Done"
+  jiraFields:
+    labels:
+    - "dev-portal-sample-pkce-flow"
+    - "security-scanning"
+    components:
+      - name: "dev-portal"
+
+squads:
+- name: development
+  sourceRepositories:
+  - name: Sample Code for PKCE flow
+    sourceRepos: 
+    - name: github.com/ibm-security-verify/dev-portal-sample-pkce-flow
+      properties:
+      - repository_token_name: github-com-token
