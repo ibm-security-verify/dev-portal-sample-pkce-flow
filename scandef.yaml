@@ -10,7 +10,7 @@ defaults:
       - name: "dev-portal"
 
 squads:
-- name: development
+- name: dev-sample-pkce-flow
   sourceRepositories:
   - name: Sample Code for PKCE flow
     sourceRepos: 
