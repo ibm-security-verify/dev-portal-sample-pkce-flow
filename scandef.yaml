@@ -6,6 +6,7 @@ defaults:
     labels:
     - "dev-portal-sample-pkce-flow"
     - "security-scanning"
+    - "dev-portal-sample-app"
     components:
       - name: "dev-portal"
 
